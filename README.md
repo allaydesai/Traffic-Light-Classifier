@@ -22,7 +22,11 @@ Self-Driving Car Engineer Nanodegree Program
 
 ### OVERVIEW
 
-This project is a perception module, part of Udacity self driving car nano-degree capston project found [I'm an inline-style link].(https://www.google.com) Fine tuning SSD_mobilenet using Tensorflow Object Detection API for custom detection
+This project is part of Udacity self driving car nano-degree [Capstone Project](https://github.com/allaydesai/SDCND_system_integration) and plays the role of perception module within it. Goal of this project is to fine tune a SSD_mobilenet model using tensorflow object detection API and pretrained weights on coco dataset for customized traffic light detection. The trained model detects traffic lights from the images sent by the onboard camera and classify's the detections into 3 available categories: green, yellow and red. Based on the classification the car can decide on how to behave in proximity of traffic lights.
+
+The process begins with data collection followed by labeling of collected data. Next the data is divided into training and testing sets. The newly divided sets of data are then converted to TF Records to be processed by tensorflow API training function. 
+
+Upon completion of the newly created dataset, the next step is to create an environment with required dependecies. Thereafter, the tensorflow/models repository is cloned. Now we can download the chosen pre trained model and its respective config file. Finally, the config file is edited and the model is set to train. 
 
 ### DATASET
 
