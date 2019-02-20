@@ -26,6 +26,42 @@ Fine tuning SSD_mobilenet using Tensorflow Object Detection API for custom detec
 
 ### DATASET
 
+Steps for creating custom data:
+
+**STEP1-Data Collection:** Collect a few hundred images of traffic lights in udacity simulator and from udacity test loop found in rosbag.
+
+**STEP2-Label Data:** Label the images using LabelImg: This process involves drawing boxes around your object's in an image. The label program generates an XML file that describes the object's in the pictures.
+	https://github.com/tzutalin/labelImg
+
+**STEP3-Split Data:** Split the data into train/test samples, images and respective XML files
+
+**STEP4-Convert XML to CSV:** Using the helper library convert the csv files to XML
+
+	def main():
+	    for directory in ['train','test']:
+		image_path = os.path.join(os.getcwd(), 'images/{}'.format(directory))
+		xml_df = xml_to_csv(image_path)
+		xml_df.to_csv('data/{}_labels.csv'.format(directory), index=None)
+		print('Successfully converted xml to csv.')
+	    
+**STEP5-Generate TF Records:** Generate TF Records from these split data
+
+  Make the following changes:
+	
+	def class_text_to_int(row_label):
+	    if row_label == 'Green':
+		return 1
+	    else if row_label == 'Yellow':
+		return 2
+	    else if row_label == 'Red':
+		return 3
+	    else:
+		None
+
+  Execute:
+	
+	python3 generate_tfrecord.py --csv_input=data/train_labels.csv --output_path=data/train.record
+
 ![alt text][sim-image-1] | ![alt text][sim-image-2] 
 :-------------------------:|:-------------------------:
 ![alt text][sim-image-3] | ![alt text][sim-image-4] 
@@ -49,8 +85,9 @@ Fine tuning SSD_mobilenet using Tensorflow Object Detection API for custom detec
 
 	git clone https://github.com/tensorflow/models.git
 
-Upon completing this you should be able to navigate  the following path:
-Path_to_project_folder/models/research/object_detection
+Upon completing this you should be able to navigate to the following path:
+
+	Path_to_project_folder/models/research/object_detection
 
 **STEP-3:** Extract dependent python programs 
 
@@ -193,3 +230,5 @@ Visit in browser: `127.0.0.1:6006`
 - https://github.com/SiliconCar/traffic_light_detection_one_shot_transfer_learning
 
 - https://github.com/Az4z3l/CarND-Traffic-Light-Detection
+
+- https://github.com/datitran/raccoon_dataset
