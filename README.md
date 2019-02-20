@@ -34,20 +34,20 @@ Fine tuning SSD_mobilenet using Tensorflow Object Detection API for custom detec
 
 **STEP-1:** Create anaconda environment and install dependencies 
 
-`conda create -n object_detection python=3`
+	conda create -n object_detection python=3
 
-`activate object_detection`
+	activate object_detection
 
-`pip install tensorflow
-pip install pillow
-pip install lxml
-pip install jupyter
-pip install matplotlib`
+	pip install tensorflow
+	pip install pillow
+	pip install lxml
+	pip install jupyter
+	pip install matplotlib
 
 
 **STEP-2:** Navigate to project directory and clone repo
 
-`git clone https://github.com/tensorflow/models.git`
+	git clone https://github.com/tensorflow/models.git
 
 Upon completing this you should be able to navigate  the following path:
 Path_to_project_folder/models/research/object_detection
@@ -56,23 +56,23 @@ Path_to_project_folder/models/research/object_detection
 
 Download and unzip Protocol Buffers V3.4.0 https://github.com/protocolbuffers/protobuf/releases
 
-From : models/research/
+From : `models/research/`
 
 Windows:
-`protoc object_detection/protos/*.proto --python_out=.`
+	protoc object_detection/protos/*.proto --python_out=.
 
 Linux:
-`"C:/Program Files/protoc/bin/protoc" object_detection/protos/*.proto --python_out=.`
+	"C:/Program Files/protoc/bin/protoc" object_detection/protos/*.proto --python_out=.
 
 **STEP-4:** Add system path 
 
-From: models/research/
+From: `models/research/`
 
 Windows:
-`SET PYTHONPATH=%cd%;%cd%\slim`
+	SET PYTHONPATH=%cd%;%cd%\slim
 
 Linux:
-`export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim`
+	export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
 
 **STEP-5:** Move the new finetune dataset in project folder 
 
@@ -89,63 +89,65 @@ To: models/research/object_detection/data/
 
 From: models/research/object_detection/
 
-Model of choice: ssd_mobilenet_v1_coco
+Model of choice: `ssd_mobilenet_v1_coco`
 
-`wget http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_2018_01_28.tar.gz`
+	`wget http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_2018_01_28.tar.gz`
 
 From: models/research/object_detection/training/
 
-Config file: ssd_mobilenet_v1_coco.config
+Config file: `ssd_mobilenet_v1_coco.config`
 
-`wget https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/samples/configs/ssd_mobilenet_v1_coco.config`
+	`wget https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/samples/configs/ssd_mobilenet_v1_coco.config`
 
 **STEP-7:** Edit the config file
 
 Edit the following parameters 
 `
-Model.ssd
-	- .num_classes: 3
-	- .type: 'ssd_mobilenet_v1'
-Train_config
-	- .batch_size: 10-28
-	- fine_tune_checkpoint: "ssd_mobilenet_v1_coco_2018_01_28/model.ckpt"
+	Model.ssd
+		- .num_classes: 3
+		- .type: 'ssd_mobilenet_v1'
+	Train_config
+		- .batch_size: 10-28
+		- fine_tune_checkpoint: "ssd_mobilenet_v1_coco_2018_01_28/model.ckpt"
 
-Train_input_reader
-	- .tf_record_input_reader.input_path: "data/train.record"
-	- label_map_path: "data/label_map.pbtxt"
+	Train_input_reader
+		- .tf_record_input_reader.input_path: "data/train.record"
+		- label_map_path: "data/label_map.pbtxt"
 
-eval_input_reader 
-	- tf_record_input_reader.input_path: "data/test.record"
-	- label_map_path: "training/label_map.pbtxt"
+	eval_input_reader 
+		- tf_record_input_reader.input_path: "data/test.record"
+		- label_map_path: "data/label_map.pbtxt"
 `
 **STEP-8:** Create a label File
-`
-item {
-  id: 1
-  name: 'Green'
-}
 
-item {
-  id: 2
-  name: 'Yellow'
-}
+	
+	item {
+	  id: 1
+	  name: 'Green'
+	}
 
-item {
-  id: 3
-  name: 'Red'
-}
-`
+	item {
+	  id: 2
+	  name: 'Yellow'
+	}
+
+	item {
+	  id: 3
+	  name: 'Red'
+	}
+	
+
 **STEP-9:** Train model
 
-From: models/research/object_detection
+From: `models/research/object_detection`
 
-`python3 legacy/train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/ssd_mobilenet_v1_coco.config`
+	python3 legacy/train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/ssd_mobilenet_v1_coco.config
 
 **STEP-10:** Visualize model training
 
-From: models/research/object_detection
+From: `models/research/object_detection`
 
-`tensorboard --logdir='training'`
+	tensorboard --logdir='training'
 
 Visit in browser: 127.0.0.1:6006
 
