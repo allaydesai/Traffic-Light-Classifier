@@ -22,7 +22,7 @@ Self-Driving Car Engineer Nanodegree Program
 
 ### OVERVIEW
 
-Fine tuning SSD_mobilenet using Tensorflow Object Detection API for custom detection
+This project is a perception module, part of Udacity self driving car nano-degree capston project found [I'm an inline-style link].(https://www.google.com) Fine tuning SSD_mobilenet using Tensorflow Object Detection API for custom detection
 
 ### DATASET
 
@@ -31,6 +31,7 @@ Steps for creating custom data:
 **STEP1-Data Collection:** Collect a few hundred images of traffic lights in udacity simulator and from udacity test loop found in rosbag.
 
 **STEP2-Label Data:** Label the images using LabelImg: This process involves drawing boxes around your object's in an image. The label program generates an XML file that describes the object's in the pictures.
+
 	https://github.com/tzutalin/labelImg
 
 **STEP3-Split Data:** Split the data into train/test samples, images and respective XML files
