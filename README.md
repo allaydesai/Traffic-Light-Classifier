@@ -153,7 +153,7 @@ From: `models/research/object_detection`
 
 	tensorboard --logdir='training'
 
-Visit in browser: 127.0.0.1:6006
+Visit in browser: `127.0.0.1:6006`
 
 
 ### RESULTS
@@ -164,17 +164,28 @@ Visit in browser: 127.0.0.1:6006
 ### REFERENCE LINKS:
 
 - Tensorflow Models
-https://github.com/tensorflow/models
 
-- Tensorflow API Object Detection Installation https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md
+	https://github.com/tensorflow/models
 
-- Tensorflow Object Detection API Tutorial https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/training.html
+- Tensorflow API Object Detection Installation 
 
-- Tensorflow detection model zoo https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md
+	https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md
 
-- Tensorflow detection model config https://github.com/tensorflow/models/tree/master/research/object_detection/samples/configs
+- Tensorflow Object Detection API Tutorial 
 
-- Introduction and Use - Tensorflow Object Detection API Tutorial https://pythonprogramming.net/introduction-use-tensorflow-object-detection-api-tutorial/
+	https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/training.html
+
+- Tensorflow detection model zoo 
+
+	https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md
+
+- Tensorflow detection model config 
+
+	https://github.com/tensorflow/models/tree/master/research/object_detection/samples/configs
+
+- Introduction and Use - Tensorflow Object Detection API Tutorial 
+
+	https://pythonprogramming.net/introduction-use-tensorflow-object-detection-api-tutorial/
 
 
 ### REFERENCE REPOSITORIES:
