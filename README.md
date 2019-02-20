@@ -59,9 +59,11 @@ Download and unzip Protocol Buffers V3.4.0 https://github.com/protocolbuffers/pr
 From : `models/research/`
 
 Windows:
+
 	protoc object_detection/protos/*.proto --python_out=.
 
 Linux:
+
 	"C:/Program Files/protoc/bin/protoc" object_detection/protos/*.proto --python_out=.
 
 **STEP-4:** Add system path 
@@ -69,9 +71,11 @@ Linux:
 From: `models/research/`
 
 Windows:
+
 	SET PYTHONPATH=%cd%;%cd%\slim
 
 Linux:
+
 	export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
 
 **STEP-5:** Move the new finetune dataset in project folder 
@@ -79,25 +83,25 @@ Linux:
 Move all the tf-records created to data folder
 	- Train.tfrecord…
 
-To: models/research/object_detection/data/
+To: `models/research/object_detection/data/`
 
 Move the label.lbtxt file to data folder
 
-To: models/research/object_detection/data/
+To: `models/research/object_detection/data/`
 
 **STEP-6:** Download the model and config file for fine tuning 
 
-From: models/research/object_detection/
+From: `models/research/object_detection/`
 
 Model of choice: `ssd_mobilenet_v1_coco`
 
-	`wget http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_2018_01_28.tar.gz`
+	wget http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_2018_01_28.tar.gz
 
-From: models/research/object_detection/training/
+From: `models/research/object_detection/training/`
 
 Config file: `ssd_mobilenet_v1_coco.config`
 
-	`wget https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/samples/configs/ssd_mobilenet_v1_coco.config`
+	wget https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/samples/configs/ssd_mobilenet_v1_coco.config
 
 **STEP-7:** Edit the config file
 
