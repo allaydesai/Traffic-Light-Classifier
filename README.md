@@ -197,6 +197,26 @@ From: `models/research/object_detection`
 
 Visit in browser: `127.0.0.1:6006`
 
+**STEP-11:** Create inference graph
+
+Finally, Due to system requirements on Carla, udacity's Self Driving. The model must load and predict using tensorflow V1.3.0. Now the object detection API can only be rolled back to compatibility with tensorflow V1.4.0. Hence, we have to create the inference graph using the training checkpoints in tensorflow V1.4.0 virtual environment. The graph created from this is compatible with tensorflow V1.3.0.
+
+Create a temporary repository of tensorflow models/object_detection
+
+	git clone https://github.com/tensorflow/models.git temp
+	
+Roll it back to a version compatible with tensorflow V1.4.0: 
+
+	cd temp
+	git checkout d135ed9c04bc9c60ea58f493559e60bc7673beb7
+	
+Export the inference graph:
+
+	python3 export_inference_graph.py \
+	    --input_type image_tensor \
+	    --pipeline_config_path training/ssd_mobilenet_v1_pets.config \
+	    --trained_checkpoint_prefix training/model.ckpt-10856 \
+	    --output_directory mac_n_cheese_inference_graph
 
 ### RESULTS
 
